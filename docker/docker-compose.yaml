@@ -1,0 +1,30 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:9.6
+    container_name: postgresql
+    restart: always
+    volumes:
+      - ./.data-postgres:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    environment:
+      - DB_SERVER_HOST=postgresql
+      - DB_SERVER_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=visir
+  backend:
+    container_name: backend
+    restart: always
+    build:
+      context: .
+    depends_on:
+      - "postgresql"
+    volumes:
+      - ./src:/src
+    ports:
+      - "80:8000"
+    environment:
+      - SUBSCRIBER_UUID=de3f098f-0886-4f9e-a950-5429d8f91a82
+    command: python3 test.py

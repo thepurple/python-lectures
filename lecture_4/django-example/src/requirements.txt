@@ -1,0 +1,6 @@
+django
+ipython
+pylint
+pylint-django
+pycodestyle
+
