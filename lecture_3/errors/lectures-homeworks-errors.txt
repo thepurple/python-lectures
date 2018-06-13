@@ -1,0 +1,146 @@
+########################################
+########################################
+Ошибки с Docker
+- docker push без реального кода, и предлагается сделать пул и запуск с volume
+
+
+########################################
+Python
+########################################
+- Не питон стиль
+        self._full_descr = self._type + ' - ' + self._description
+->
+        self._full_descr = "{} - {}".format(self._type, self._description)
+        self._full_descr = f"{self._type} - {self._description}"
+
+
+
+- не выполняются проверки на pep8
+
+
+########################################
+class Base:
+    def __init__( self, name = '', color = 'green' ):
+        self.name = name
+        self.color = color
+        self._type = ''
+        self._description = ''
+        self._full_descr = self._type + ' - ' + self._description
+	...
+	...
+	...
+    def get_full_description( self ):
+        return self._full_descr
+
+
+
+
+
+    def get_full_description( self ):
+        # return self._full_descr
+		# ->
+		return f"{self._type} - {self._description}"
+
+
+########################################
+if (r < 0):
+->
+if r < 0:
+
+if (x == self.x1 and self.y2 == self.y1):
+->
+if x == self.x1 and self.y2 == self.y1:
+
+
+########################################
+raise NoZeroException('Can\'t be zero radius')
+raise NoZeroException("Can't be zero radius")
+
+
+########################################
+@x2.setter
+def x2(self, x):
+    try :
+        if (x < 0):
+            raise NegValException('Should be positive x2')
+        if (x == self.x1 and self.y2 == self.y1):
+            raise NotSamePointException('Should be other point')
+        self.__x2 = x
+    except (NegValException, NotSamePointException) as e:
+        print(e)	# Incorrect
+
+
+########################################
+@x2.setter
+def x2(self, x):
+    try :
+        if (x == self.x1):
+            raise NotSamePointException('Should be oposite')
+        return Line.x2.fset(self, x)
+    except NotSamePointException as e:
+        print(e)
+
+
+
+Пример:
+class Base:
+    def __init__(self):
+        self._b = None
+
+    @property
+    def b(self):
+        return self._b
+
+    @b.setter
+    def b(self, b):
+        self._b = b
+
+class Test(Base):
+    def __init__(self):
+        pass
+
+    # @property
+    # def b(self):
+    #     return Base.b.fget(self)
+    #
+    # @b.setter
+    # def b(self, b):
+    #     return Base.b.fset(self, b)
+
+if __name__ == "__main__":
+    t = Test()
+    t.b = 55
+    print(t.b)
+
+
+
+########################################
+class Shape(object):
+    def __init__(self, *args):
+        'ok'
+        self.__name = None
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, new_name):
+        self.__name = new_name
+
+
+s = Shape()
+print(s.x)
+
+
+########################################
+# 1
+backup = open(location, 'w')
+if backup:
+    backup.write("test")
+    backup.close()
+
+# 2
+with open(location, 'w') as backup:
+    backup.write("test")
+

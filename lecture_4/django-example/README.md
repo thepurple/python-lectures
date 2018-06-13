@@ -12,5 +12,5 @@ docker run --rm -v "$(pwd)/src:/src" -p 8000:8000 --name django-test -it django-
 
 ## Run docker container django server
 ```bash
-docker start --rm -v "$(pwd)/src:/src" -p 8000:8000 --name django-test django-l4
+docker run --rm -v "$(pwd)/src:/src" -p 8000:8000 --name django-test django-l4
 ```

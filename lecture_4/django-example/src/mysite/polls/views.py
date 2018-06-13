@@ -1,7 +1,7 @@
 """
 Poll views
 """
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -55,6 +55,7 @@ def vote(request, question_id):
             'question': question,
             'error_message': "You didn't select a choice.",
         })
+        return HttpResponse()
     else:
         selected_choice.votes += 1
         selected_choice.save()
