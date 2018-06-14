@@ -21,7 +21,7 @@ ENV TERM='xterm-256color'
 
 # update system and install packages
 RUN apt-get update # && apt-get upgrade -y
-RUN apt-get install -y vim
+RUN apt-get install -y vim sudo
 RUN echo "alias ll='ls -la --color=auto'" >> ~/.bashrc
 RUN echo "syntax on" >> ~/.vimrc
 
@@ -30,5 +30,11 @@ ADD /src /backend
 RUN pip install -r /backend/requirements.txt
 
 WORKDIR /backend
+
+# add user `user` and add sudo access without password
+RUN adduser --disabled-password --gecos '' user
+RUN adduser user sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER user
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

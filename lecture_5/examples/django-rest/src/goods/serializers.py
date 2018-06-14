@@ -1,9 +1,7 @@
 """
-Patients module serializer
+Goods module serializer
 """
-import logging
 from rest_framework import serializers
-
 from .models import Goods
 
 

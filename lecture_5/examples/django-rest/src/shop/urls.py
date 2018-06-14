@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import logging
 from django.contrib import admin
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
@@ -24,11 +23,11 @@ from lib.routers import DefaultRouterExt
 
 # API routes
 from goods import urls as goods_urls
-logger = logging.getLogger("app")
 
 
 ###############################################################################
 # Register API routes
+# pylint: disable=invalid-name
 router = DefaultRouterExt()
 router.extend(goods_urls.router)
 
@@ -48,5 +47,5 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    # TODO - show some landing page
+    # add and show some landing page
 ]

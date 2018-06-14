@@ -1,6 +1,5 @@
 django
 ipython
+pycodestyle
 pylint
 pylint-django
-pycodestyle
-

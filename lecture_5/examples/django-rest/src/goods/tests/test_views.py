@@ -1,13 +1,13 @@
 """
 Tests for Goods module views
 """
-from ..models import Goods
 from rest_framework.reverse import reverse
 from rest_framework.test import APITestCase
 from rest_framework.status import (
     HTTP_201_CREATED, HTTP_200_OK, HTTP_204_NO_CONTENT)
 
 from .factories import GoodsFactory
+from ..models import Goods
 
 
 class GoodsViewTest(APITestCase):
@@ -28,7 +28,9 @@ class GoodsViewTest(APITestCase):
 
         self.assertEqual(resp.status_code, HTTP_201_CREATED)
         self.assertEqual(resp.data,
-                         {'id': 1, 'name': 'test', 'description': None})
+                         {'id': goods.id,
+                          'name': goods.name,
+                          'description': goods.description})
 
     def test_get_list(self):
         """

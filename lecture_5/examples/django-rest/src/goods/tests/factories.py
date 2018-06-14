@@ -5,11 +5,12 @@ import factory
 from factory import DjangoModelFactory
 
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=unnecessary-lambda
 class GoodsFactory(DjangoModelFactory):
     """
     Company factory
     """
-    # pylint: disable=unnecessary-lambda
 
     class Meta:
         model = 'goods.Goods'

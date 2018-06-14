@@ -1,5 +1,9 @@
+coreapi
 django
 djangorestframework
 factory_boy
+ipython
 pygments  # We'll be using this for the code highlighting
-coreapi
+pycodestyle
+pylint
+pylint-django
