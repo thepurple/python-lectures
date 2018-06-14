@@ -1,5 +1,0 @@
-django
-djangorestframework
-factory_boy
-pygments  # We'll be using this for the code highlighting
-coreapi
