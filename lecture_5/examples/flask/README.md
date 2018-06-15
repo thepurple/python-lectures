@@ -27,11 +27,14 @@ python app.py
 ## How to check how it works
 
 http://127.0.0.1:5000/ 
+
 You'll get 404
 
 http://127.0.0.1:5000/user
 
 ## Test API with curl:
+
+```
 curl -H "Content-Type: application/json" -X POST -d '{"username":"abc","email":"test@test.com"}' http://localhost:5000/user
 curl -H "Content-Type: application/json" http://localhost:5000/user/1
 curl -H "Content-Type: application/json" -X PUT -d '{"username":"test","email":"test@test.com"}' http://localhost:5000/user/1
@@ -42,3 +45,4 @@ curl -H "Content-Type: application/json" -X DELETE http://localhost:5000/user/1
 curl -H "Content-Type: application/json" http://localhost:5000/user
 curl -H "Content-Type: application/json" -X DELETE http://localhost:5000/user/2
 curl -H "Content-Type: application/json" http://localhost:5000/user
+```
