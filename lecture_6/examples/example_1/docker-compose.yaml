@@ -1,0 +1,45 @@
+version: '3'
+services:
+
+  test_postgresql:
+    image: postgres:9.6
+    container_name: test_postgresql
+    restart: always
+#    volumes:
+#      - ./.data-postgres:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      - DB_SERVER_HOST=postgresql
+      - DB_SERVER_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=django-rest
+
+  test_backend:
+    container_name: test_django_rest
+#    restart: always
+    build:
+      context: ./django_rest
+    depends_on:
+      - "test_postgresql"
+    volumes:
+      - ./django_rest/src:/backend
+    ports:
+      - "8000:8000"
+    command: /backend/runserver.sh
+
+  frontend:
+    container_name: frontend
+#    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    entrypoint: sh entrypoint.sh
+    working_dir: /home/node
+    depends_on:
+      - "test_backend"
+    ports:
+      - 8080:3000
+    volumes:
+      - ./frontend:/home/node

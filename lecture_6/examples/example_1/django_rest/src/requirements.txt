@@ -1,0 +1,10 @@
+coreapi
+django
+djangorestframework
+factory_boy
+ipython
+pygments  # We'll be using this for the code highlighting
+pycodestyle
+pylint
+pylint-django
+psycopg2-binary
