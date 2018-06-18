@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: ./redis
+    ports:
+     - "5000:5000"
+  redis:
+    image: "redis:alpine"
+  celery:
+    build: ./celery
+
