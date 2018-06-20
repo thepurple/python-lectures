@@ -8,4 +8,5 @@ services:
     image: "redis:alpine"
   celery:
     build: ./celery
-
+    volumes:
+      - ./celery:/code
