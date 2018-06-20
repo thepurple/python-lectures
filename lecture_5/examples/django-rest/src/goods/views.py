@@ -16,13 +16,13 @@ class GoodsViewSet(viewsets.ModelViewSet):
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
 
-    def retrieve(self, request, *args, **kwargs):
-        """Retrieve a model instance."""
-        return Response("Get")
-
-    def list(self, request, *args, **kwargs):
-        """List a queryset."""
-        return Response("List")
+    # def retrieve(self, request, *args, **kwargs):
+    #     """Retrieve a model instance."""
+    #     return Response("Get")
+    #
+    # def list(self, request, *args, **kwargs):
+    #     """List a queryset."""
+    #     return Response("List")
 
     @staticmethod
     @action(methods=['get'], detail=True)
