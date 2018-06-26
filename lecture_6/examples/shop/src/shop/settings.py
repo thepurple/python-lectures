@@ -32,8 +32,7 @@ DEFAULT_PORT = 8001
 # Application definition
 INSTALLED_APPS = [
     'goods',
-    'signup',
-    'landing.apps.LandingConfig',
+    'landing',
     'polls.apps.PollsConfig',
     'utils',
     'registration', #should be immediately above 'django.contrib.admin'
