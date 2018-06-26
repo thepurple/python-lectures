@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'landing.apps.LandingConfig',
     'polls.apps.PollsConfig',
     'utils',
+    'registration', #should be immediately above 'django.contrib.admin'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +60,9 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f"{BASE_DIR}/templates"],
+        'DIRS': [
+            f"{BASE_DIR}/templates",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,3 +130,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# registration
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp/email')
+LOGIN_REDIRECT_URL = "/"
