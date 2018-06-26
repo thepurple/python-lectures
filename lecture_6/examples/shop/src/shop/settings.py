@@ -32,6 +32,7 @@ DEFAULT_PORT = 8001
 # Application definition
 INSTALLED_APPS = [
     'goods',
+    'signup',
     'landing.apps.LandingConfig',
     'polls.apps.PollsConfig',
     'utils',
