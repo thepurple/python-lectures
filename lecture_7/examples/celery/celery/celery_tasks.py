@@ -1,6 +1,9 @@
 import time
-
+from celery import Celery
 from celery.task import task
+
+app = Celery('app')
+app.config_from_object("celeryconfig")
 
 
 @task

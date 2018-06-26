@@ -2,7 +2,7 @@ import requests
 from celery import Celery
 
 app = Celery('app', broker='redis://redis:6379/0')
-
+app.config_from_object("celeryconfig")
 
 @app.task
 def fetch_url(url):
