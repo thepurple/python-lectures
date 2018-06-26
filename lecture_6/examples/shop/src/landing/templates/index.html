@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}Main page{% endblock header %}
+
+{% block content %}
+<div>
+    Landing page <strong>block</strong> with some intro information.
+</div>
+<br />
+
+<div>
+    <a href="goods">Goods</a>
+</div>
+<br />
+
+
+
+{% include "ads.html" %}
+
+{% endblock content %}

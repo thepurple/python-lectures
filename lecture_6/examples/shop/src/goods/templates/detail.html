@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load float_extras %}
+
+{% block header %}Goods description{% endblock header %}
+
+{% block content %}
+{% include "breadcrumbs.html" %}
+
+<div>
+    <strong>Name:</strong>
+    {{ goods_item.name }}
+    <br />
+</div>
+<div>
+    <strong>Description:</strong>
+    {{ goods_item.description }}
+    <br />
+</div>
+<div>
+    <strong>Price:</strong>
+    <span style="font-size:32px;">{{ goods_item.price|floatformat:"0" }}</span>
+    .<span style="font-size:16px;">{{ goods_item.price|fractional_part }}</span>
+    <br />
+</div>
+
+{% endblock content %}
+
+
+{% block ads %}{% endblock ads %}

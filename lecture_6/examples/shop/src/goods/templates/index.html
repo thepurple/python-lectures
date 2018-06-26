@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %}Goods{% endblock header %}
+
+{% block content %}
+<div>
+    <ul>
+    {% for i in goods %}
+        <li>
+            <a href="{% url 'goods:detail' i.id %}">{{ i.name }}</a> -
+                <span style="font-size:24px;">{{ i.price|floatformat:"0" }}</span>
+                .<span style="font-size:16px;">{{ i.price|stringformat:"f"|slice:"-6:-4" }}</span>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
