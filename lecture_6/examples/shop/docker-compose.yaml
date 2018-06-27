@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  test_postgresql:
+    image: postgres:9.6
+    container_name: test_postgresql
+#    volumes:
+#      - ./.pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      - DB_SERVER_HOST=postgresql
+      - DB_SERVER_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test
+
+  test_backend:
+    container_name: test_backend
+    build:
+      context: .
+    depends_on:
+      - "test_postgresql"
+    volumes:
+      - ./src:/backend
+    ports:
+      - "8000:8000"

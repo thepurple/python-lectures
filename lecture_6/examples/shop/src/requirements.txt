@@ -4,3 +4,4 @@ ipython
 pycodestyle
 pylint
 pylint-django
+psycopg2-binary

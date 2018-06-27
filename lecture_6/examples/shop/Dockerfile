@@ -20,6 +20,6 @@ ADD /src /backend
 RUN sudo pip install -r /backend/requirements.txt
 
 # change workdir
-WORKDIR /src
+WORKDIR /backend
 
 CMD ["python", "/backend/manage.py", "runserver", "0.0.0.0:8000"]
