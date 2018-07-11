@@ -27,7 +27,7 @@ SECRET_KEY = '99xb!h3uk!di7&55eu%y$67q2fy^igv56qmn0w20i8_lmv#-mx'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-DEFAULT_PORT = 8001
+DEFAULT_PORT = 8000
 
 # Application definition
 INSTALLED_APPS = [
@@ -82,24 +82,24 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'NAME': '/backend/db.sqlite3',
+    }
+}
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'test',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'test_postgresql',
+#         'PORT': '5432',
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'test_postgresql',
-        'PORT': '5432',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

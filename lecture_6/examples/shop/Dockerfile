@@ -6,11 +6,11 @@ ENV TERM='xterm-256color'
 # install OS packages
 RUN apt-get update && apt-get install -y vim sqlite3 tree sudo
 
-# add user `user` and add sudo access without password
-RUN adduser --disabled-password --gecos '' user
-RUN adduser user sudo
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER user
+## add user `user` and add sudo access without password
+#RUN adduser --disabled-password --gecos '' user
+#RUN adduser user sudo
+#RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+#USER user
 
 # add alias for ls -la
 RUN echo "alias ll='ls -la --color=auto'" >> ~/.bashrc
