@@ -1,7 +1,7 @@
 # Celery test
 
 ```bash
-celery worker -A app:app -l info -c 4
+celery worker -A app:app -l info -c 2
 ```
 
 ```bash

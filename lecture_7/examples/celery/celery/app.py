@@ -1,14 +1,17 @@
 import requests
 from celery import Celery
 
-app = Celery('app', broker='redis://redis:6379/0')
+app = Celery('app')
 app.config_from_object("celeryconfig")
+
 
 @app.task
 def fetch_url(url):
-    resp = requests.get(url)
-    print(resp.status_code)
-    # TODO place result into redis
+    try:
+        resp = requests.get(url)
+        print(f"{url} - {resp.status_code}")
+    except requests.ConnectionError as e:
+        print("{} - Connection Error".format(url))
 
 
 def func(urls):
@@ -21,7 +24,7 @@ if __name__ == "__main__":
         "http://google.com",
         "https://facebook.com",
         "https://twitter.com",
-        "https://alexa.com"
+        "https://some-fake.url"
     ])
 
 # import time

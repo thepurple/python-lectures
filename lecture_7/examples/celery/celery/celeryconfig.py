@@ -1,13 +1,13 @@
-BROKER_URL = 'redis://redis:6379/0'
-CELERY_IMPORTS = ('celery_tasks', )
+broker_url = 'redis://redis:6379/0'
+celery_imports = ('celery_tasks', )
 
-CELERY_RESULT_BACKEND = 'redis'
-CELERY_RESULT_PERSISTENT = True
-CELERY_TASK_RESULT_EXPIRES = None
+ceery_result_backend = 'redis'
+celery_result_persistent = True
+celery_task_result_expires = None
 
-CELERY_DEFAULT_QUEUE = 'default'
+celery_default_queue = 'default'
 
-CELERY_QUEUES = {
+celery_queues = {
     'default': {
         'binding_key': 'task.#',
     },
@@ -18,11 +18,11 @@ CELERY_QUEUES = {
         'binding_key': 'result.#',
     },
 }
-CELERY_DEFAULT_EXCHANGE = 'tasks'
-CELERY_DEFAULT_EXCHANGE_TYPE = 'topic'
-CELERY_DEFAULT_ROUTING_KEY = 'task.default'
+celery_default_exchange = 'tasks'
+celery_default_exchange_type = 'topic'
+celery_default_routing_key = 'task.default'
 
-CELERY_ROUTES = {
+celery_routes = {
     'tasks.compute': {
         'queue': 'compute',
         'routing_key': 'compute.a_result'
