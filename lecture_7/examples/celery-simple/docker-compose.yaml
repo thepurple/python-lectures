@@ -5,6 +5,6 @@ services:
     image: "redis:alpine"
   celery:
     container_name: celerysimple_celery
-    build: ./celery
+    build: .
     volumes:
-      - ./celery:/code
+      - .:/code
