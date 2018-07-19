@@ -10,9 +10,12 @@ services:
       - ./celery:/code
     depends_on:
       - redis
+    command: celery worker -A tasks -l info -c 2
   web:
     container_name: celery_web
     build: app_with_redis
+    volumes:
+      - ./app_with_redis:/code
     ports:
      - "5000:5000"
     depends_on:
