@@ -8,7 +8,7 @@ app.config_from_object("celeryconfig")
 
 @app.task(name="tasks.fetch_url")
 def fetch_url(url):
-    sleep(10)
+    sleep(5)
     try:
         resp = requests.get(url)
         print(f"{url} - {resp.status_code}")
@@ -16,7 +16,7 @@ def fetch_url(url):
         print("{} - Connection Error".format(url))
 
 
-@app.task
+@app.task(name='tasks.add')
 def add(x, y):
     sleep(5)
     return x + y
