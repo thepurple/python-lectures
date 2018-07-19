@@ -1,10 +1,5 @@
 version: '3'
 services:
-  web:
-    container_name: celery_web
-    build: app_with_redis
-    ports:
-     - "5000:5000"
   redis:
     image: "redis:alpine"
     container_name: celery_redis
@@ -13,3 +8,12 @@ services:
     build: celery
     volumes:
       - ./celery:/code
+    depends_on:
+      - redis
+  web:
+    container_name: celery_web
+    build: app_with_redis
+    ports:
+     - "5000:5000"
+    depends_on:
+      - celery
