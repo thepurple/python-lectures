@@ -8,3 +8,5 @@ services:
     build: .
     volumes:
       - .:/code
+    depends_on:
+      - redis
