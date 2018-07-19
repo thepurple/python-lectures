@@ -10,7 +10,7 @@ services:
       - ./celery:/code
     depends_on:
       - redis
-    command: celery worker -A tasks -l info -c 2
+    command: celery worker -A tasks -l info -c 2 -Q "celery,urls,add"
   web:
     container_name: celery_web
     build: app_with_redis
